@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://technoinge.local/schemas/event.schema.json",
+  "type": "object",
+  "required": ["id", "type", "specversion", "source", "subject", "time", "tenant_id", "actor_id", "trace_id", "data"],
+  "properties": {
+    "id": {"type": "string", "minLength": 1},
+    "type": {"type": "string", "minLength": 1},
+    "specversion": {"const": "1.0"},
+    "source": {"type": "string", "minLength": 1},
+    "subject": {"type": "string", "minLength": 1},
+    "time": {"type": "string", "format": "date-time"},
+    "tenant_id": {"type": "string", "minLength": 1},
+    "actor_id": {"type": "string", "minLength": 1},
+    "task_id": {"type": ["string", "null"]},
+    "trace_id": {"type": "string", "minLength": 1},
+    "causation_id": {"type": ["string", "null"]},
+    "correlation_id": {"type": ["string", "null"]},
+    "schema_ref": {"type": ["string", "null"]},
+    "evidence_refs": {"type": "array", "items": {"type": "string"}},
+    "data": {"type": "object"}
+  },
+  "additionalProperties": true
+}
