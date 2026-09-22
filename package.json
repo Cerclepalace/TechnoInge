@@ -4,6 +4,6 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "test": "node tests/test-contracts.mjs"
+    "test": "node tests/test-contracts.mjs && node tests/test-pipeline.mjs"
   }
 }
