@@ -1,0 +1,35 @@
+asyncapi: 3.1.0
+info:
+  title: TechnoInge Events
+  version: 1.0.0
+channels:
+  engineRunCompleted:
+    address: technoinge.engine.run.completed
+    messages:
+      EngineRunCompleted:
+        $ref: '#/components/messages/EngineRunCompleted'
+operations:
+  publishEngineRunCompleted:
+    action: send
+    channel:
+      $ref: '#/channels/engineRunCompleted'
+components:
+  messages:
+    EngineRunCompleted:
+      payload:
+        $ref: '#/components/schemas/EventEnvelope'
+  schemas:
+    EventEnvelope:
+      type: object
+      required: [id, type, specversion, source, subject, time, tenant_id, actor_id, trace_id, data]
+      properties:
+        id: { type: string }
+        type: { type: string }
+        specversion: { const: '1.0' }
+        source: { type: string }
+        subject: { type: string }
+        time: { type: string, format: date-time }
+        tenant_id: { type: string }
+        actor_id: { type: string }
+        trace_id: { type: string }
+        data: { type: object }
