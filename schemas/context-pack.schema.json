@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://technoinge.local/schemas/context-pack.schema.json",
+  "type": "object",
+  "required": ["context_id", "tenant_id", "question", "entities", "evidence", "constraints", "generated_at"],
+  "properties": {
+    "context_id": {"type": "string", "minLength": 1},
+    "tenant_id": {"type": "string", "minLength": 1},
+    "question": {"type": "string", "minLength": 1},
+    "entities": {"type": "array"},
+    "evidence": {"type": "array"},
+    "constraints": {"type": "array"},
+    "generated_at": {"type": "string", "format": "date-time"},
+    "expires_at": {"type": ["string", "null"]}
+  },
+  "additionalProperties": false
+}
