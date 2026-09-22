@@ -1,0 +1,33 @@
+openapi: 3.2.0
+info:
+  title: TechnoInge Engineering API
+  version: 1.0.0
+servers:
+  - url: https://api.technoinge.example/v1
+paths:
+  /context-packs:
+    post:
+      operationId: createContextPack
+      security: [{ bearerAuth: [] }]
+      responses:
+        '201': { description: Context Pack created }
+        '403': { description: Policy denied }
+        '409': { description: Contract or tenant conflict }
+  /engines/{engine}/runs:
+    post:
+      operationId: runEngine
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - in: path
+          name: engine
+          required: true
+          schema: { type: string }
+      responses:
+        '202': { description: Engine execution accepted }
+        '403': { description: Policy denied }
+        '422': { description: Evidence or contract validation failed }
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
